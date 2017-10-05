@@ -8,7 +8,7 @@ using namespace std;
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void processInput(GLFWwindow *window);
 
-int main()
+int MakeWindow()
 {
 	glfwInit();
 	glfwWindowHint(GLFW_VERSION_MAJOR, 4);
