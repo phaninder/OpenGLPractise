@@ -1,4 +1,6 @@
 ﻿  TriangleExercise.cpp
-e:\learning projects\openglpractise\learningopengl\opengltest\opengltest\triangleexercise.cpp(190): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\learning projects\openglpractise\learningopengl\opengltest\opengltest\shader.h(50): warning C4101: 'infoLog': unreferenced local variable
+e:\learning projects\openglpractise\learningopengl\opengltest\opengltest\shader.h(49): warning C4101: 'success': unreferenced local variable
+e:\learning projects\openglpractise\learningopengl\opengltest\opengltest\triangleexercise.cpp(113): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   OpenGLTest.vcxproj -> E:\Learning Projects\OpenGLPractise\LearningOpenGL\OpenGLTest\Debug\OpenGLTest.exe
   OpenGLTest.vcxproj -> E:\Learning Projects\OpenGLPractise\LearningOpenGL\OpenGLTest\Debug\OpenGLTest.pdb (Full PDB)
