@@ -116,7 +116,8 @@ int DrawTriangle()
 		//glUseProgram(shaderProgram);
 		ourShader.use();
 		//int vertexColorLocation =glGetUniformLocation(shaderProgram, "ourColor");
-		ourShader.setVector3("ourColor", 0.0f, greenValue, 0.0f, 1.0f);
+		//ourShader.setVector3("ourColor", 0.0f, greenValue, 0.0f, 1.0f);
+		ourShader.setFloat("offset", 0.25f);
 		//glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 		glBindVertexArray(VAO);
 		//glDrawArrays(GL_TRIANGLES, 0, 6);
