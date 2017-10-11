@@ -4,7 +4,9 @@
 #include <GLFW/glfw3.h>
 #include "Shader.h"
 #include "stb_image.h"
-
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
 
@@ -129,6 +131,8 @@ int DrawTriangle()
 
 	ourShader.setInt("texture1", 0);
 	ourShader.setInt("texture2", 1);
+	
+	
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
@@ -136,9 +140,15 @@ int DrawTriangle()
 		glClearColor(0.2f, 0.5f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		float time = glfwGetTime();
-		cout << sin(time) << endl;
-		ourShader.setFloat("alphaVal", abs(sin(time)));
+		/*float time = glfwGetTime();*/
+		ourShader.setFloat("alphaVal", 0.25f);
+		glm::mat4 trans;
+		trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+		trans = glm::rotate(trans,(float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+		unsigned int transform = glGetUniformLocation(ourShader.ID, "transform");
+		glUniformMatrix4fv(transform, 1, GL_FALSE, glm::value_ptr(trans));
+
+
 		ourShader.use();
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture1);
@@ -147,6 +157,16 @@ int DrawTriangle()
 		glBindVertexArray(VAO);
 		//glDrawArrays(GL_TRIANGLES, 0, 6);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+		trans = glm::mat4();
+		trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
+		float time = glfwGetTime();
+		trans = glm::scale(trans, glm::vec3((float)sin(time), (float)sin(time), (float)sin(time)));
+		
+		glUniformMatrix4fv(transform, 1, GL_FALSE, &trans[0][0]);
+
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 		//glBindVertexArray(0);
 
 		glfwPollEvents();
